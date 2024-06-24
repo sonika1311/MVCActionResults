@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @* Single Line Statements *@
+        @{ int Count = 0; }
+        @{ Count += 100; }
+        @{ string str = "Hello World"; }
+        @{ Object Obj = new Object(); }
+
+        @* In Line Statements *@
+        Value of count is : @Count
+        <br />
+        Value of str is : @str
+        <br />
+        Obj is of type : @Obj.GetType()
+        <hr />
+        @* MultiLine statements *@
+        @{
+            string date = DateTime.Now.ToLongDateString();
+            string time = DateTime.Now.ToLongTimeString();
+            string strDate = $"Todays Date : {date}";
+            @strDate
+            <br />
+            @:Current Time is : @time
+            <br />
+            <text>Another way to repesent text in razor using text tag within multiline block.</text>
+        }
+        <hr />
+        @*If condition in raor programming*@
+        @{
+            int x = 43;
+            if (x % 2 == 0)
+            {
+                @:@x is even
+            }
+            else
+            {
+                @:@x is odd
+            }
+        }
+        <hr />
+        @{ string[] Colors = { "Red", "Blue", "Green", "Yellow", "Magenta" }; }
+        @* Loops in Razor programming - For Loop *@
+        <span>Way 1</span>
+        @{
+            <ol>
+                @for (int i = 0; i < Colors.Length; ++i)
+                {
+                    <li>@Colors[i]</li>
+                }
+            </ol>
+        }
+        <span>Way 2</span>
+        <ol>
+            @for (int i = 0; i < Colors.Length; ++i)
+            {
+                <li>@Colors[i]</li>
+            }
+        </ol>
+        <span>Way 3 using for each</span>
+        <ul>
+            @foreach (string color in Colors)
+            {
+                <li>@color</li>
+            }
+        </ul>
+
+    </div>
+</body>
+</html>
